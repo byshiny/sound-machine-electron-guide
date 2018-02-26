@@ -4,7 +4,9 @@
 const {ipcRenderer} = require('electron')
 var configuration = require('./configuration');
 
+var modifierCheckboxes = document.querySelectorAll('.global-shortcut');
 var closeEl = document.querySelector('.close');
+
 closeEl.addEventListener('click', function (e) {
     ipcRenderer.send('close-settings-window');
 });
@@ -35,5 +37,10 @@ function bindModifierCheckboxes(e) {
     }
 
     configuration.saveSettings('shortcutKeys', shortcutKeys);
+<<<<<<< HEAD
     ipcRenderer.send('set-global-shortcuts');
 }
+=======
+    ipc.send('set-global-shortcuts');
+}
+>>>>>>> 04329d06e0336d4b222df9c335c3b87c3037cf01

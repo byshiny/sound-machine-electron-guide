@@ -1,6 +1,17 @@
 'use strict';
 
+var ipc = require('ipc');
+var remote = require('remote');
+var Tray = remote.require('tray');
+var Menu = remote.require('menu');
+var path = require('path');
+
 var soundButtons = document.querySelectorAll('.button-sound');
+var closeEl = document.querySelector('.close');
+var settingsEl = document.querySelector('.settings');
+
+var trayIcon = null;
+var trayMenu = null;
 
 for (var i = 0; i < soundButtons.length; i++) {
     var soundButton = soundButtons[i];
