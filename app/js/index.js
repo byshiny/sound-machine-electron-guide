@@ -19,19 +19,20 @@ function prepareButton(buttonEl, soundName) {
     });
 }
 
-var ipc = require('ipc');
+const {ipcRenderer} = require('electron')
 
 var closeEl = document.querySelector('.close');
 closeEl.addEventListener('click', function () {
-    ipc.send('close-main-window');
+    ipcRenderer.send('close-main-window');
 });
 
-ipc.on('global-shortcut', function (arg) {
+ipcRenderer.on('global-shortcut', function (arg) {
+    console.log("hello");
     var event = new MouseEvent('click');
     soundButtons[arg].dispatchEvent(event);
 });
 
 var settingsEl = document.querySelector('.settings');
 settingsEl.addEventListener('click', function () {
-    ipc.send('open-settings-window');
+    ipcRenderer.send('open-settings-window');
 });
